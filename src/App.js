@@ -110,6 +110,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <p className="info">
+          Please commands in the following format: <br />
+          - PLACE X,Y,F<br />
+          - MOVE <br />
+          - LEFT <br />
+          - RIGHT <br />
+          PLACE will put the toy drone on the table in position X,Y and facing
+          NORTH, <br />
+          SOUTH, EAST or WEST. <br />
+        </p>
         <div className="App-intro">
           <Form className="form-wrapper mt-5" onSubmit={this.onsubmit}>
             <Form.Group>
