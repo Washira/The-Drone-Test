@@ -4,6 +4,9 @@ import "./App.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
+import Toast from "react-bootstrap/Toast";
 
 class Table extends React.Component {
   render() {
@@ -99,6 +102,7 @@ class App extends Component {
     await this.robot.processCommand(this.state.command);
     await this.forceUpdate();
     await console.log(this.state.command);
+    await e.target.reset();
   };
 
   onclick = () => {
@@ -110,16 +114,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p className="info">
-          Please commands in the following format: <br />
-          - PLACE X,Y,F<br />
-          - MOVE <br />
-          - LEFT <br />
-          - RIGHT <br />
-          PLACE will put the toy drone on the table in position X,Y and facing
-          NORTH, <br />
-          SOUTH, EAST or WEST. <br />
-        </p>
+        <Alert variant="warning">
+          Please commands in the following format: - PLACE X,Y,F - MOVE - LEFT -
+          RIGHT PLACE will put the toy drone on the table in position X,Y and
+          facing NORTH, SOUTH, EAST or WEST.
+        </Alert>
         <div className="App-intro">
           <Form className="form-wrapper mt-5" onSubmit={this.onsubmit}>
             <Form.Group>
@@ -127,7 +126,6 @@ class App extends Component {
               <Form.Control
                 autoCapitalize="characters"
                 type="text"
-                value={this.state.command}
                 onChange={this.onchange}
               />
               <Button type="submit" onClick={this.onclick}>
@@ -148,18 +146,18 @@ class App extends Component {
           </Table>
         </div>
         <div>
-          <p className="command">
-            Current Position :
+          <Container fluid className="command">
+            Current Position :{" "}
             {this.state.command === "REPORT" && this.state.clicked === "REPORT"
               ? this.robot.toString()
               : null}
-          </p>
+          </Container>
         </div>
         <div>
           {this.result.map((val, index) => (
-            <div>
-              <p key={index}>{val}</p>
-            </div>
+            <Toast>
+              <Toast.Body key={index}>{val}</Toast.Body>
+            </Toast>
           ))}
         </div>
       </div>

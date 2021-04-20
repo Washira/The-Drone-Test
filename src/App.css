@@ -33,10 +33,6 @@
   }
 }
 
-.info {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 .table {
   display: flex;
   flex-direction: column;
@@ -58,20 +54,17 @@
   line-height: 5rem;
   flex-shrink: 0;
   /* color: red; */
-  background: linear-gradient(to bottom right, white, gray);
+  background: #fffaf0;
 }
 .cell.odd:nth-of-type(2n),
 .cell.even:nth-of-type(2n + 1) {
-  background: linear-gradient(white, grey, black);
+  background: #b0c4de;
 }
 .cell.robot {
-  background: linear-gradient(yellow, yellow, yellow) !important;
+  background: #00ff00 !important;
 }
 
 .command {
-  margin-left: 25rem;
-  display: flex;
-  align-items: center;
   margin-top: 2em;
-  width: 30rem;
 }
+
